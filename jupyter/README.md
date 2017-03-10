@@ -32,10 +32,12 @@ $ ipynb 8888
 
 On your local machine, add the following to your ```bashrc```
 
+```bash
 forward_ipynb_ports() {
 	ssh -N -f -L localhost:$1:localhost:$2 $3
 	printf "Forwarding local port %s to %s remote port %s\n" "$1" "$3"  "$2"
 }
+```
 
 Forward your local port 8887 to remote port 8888 on host ```remote_hostname``` like:
 
