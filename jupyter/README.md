@@ -45,3 +45,4 @@ Forward your local port 8887 to remote port 8888 on host ```remote_hostname``` l
 $ forward_ipynb_ports 8887 8888 remote_hostname
 ```
 
+Only pain is killing everything... gotta search for the pids and ```kill```.
