@@ -14,3 +14,32 @@ IPython.notebook.get_cells()
        // loop also on output_area.outputs and set execution_count if exist.
      })
 ```
+
+# Run a notebook remotely
+
+On the remote machine, add the following to your ```bashrc``` file:
+
+```bash
+ipynb() {
+	nohup jupyter notebook --no-browser --port=$1 &
+}
+```
+
+You can now spinup a remote machine on port 8888 by typing
+```bash
+$ ipynb 8888
+```
+
+On your local machine, add the following to your ```bashrc```
+
+forward_ipynb_ports() {
+	ssh -N -f -L localhost:$1:localhost:$2 $3
+	printf "Forwarding local port %s to %s remote port %s\n" "$1" "$3"  "$2"
+}
+
+Forward your local port 8887 to remote port 8888 on host ```remote_hostname``` like:
+
+```bash
+$ forward_ipynb_ports 8887 8888 remote_hostname
+```
+
