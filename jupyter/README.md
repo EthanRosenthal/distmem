@@ -45,4 +45,29 @@ Forward your local port 8887 to remote port 8888 on host ```remote_hostname``` l
 $ forward_ipynb_ports 8887 8888 remote_hostname
 ```
 
-Only pain is killing everything... gotta search for the pids and ```kill```.
+Only pain is killing everything... gotta search for the pids and ```kill```, e.g. `ps aux | grep jupyter`.
+
+# Sublime-style keyboard shortcuts
+
+Stolen from [here](http://blog.rtwilson.com/how-to-get-sublime-text-style-editing-in-the-ipythonjupyter-notebook/)
+
+Find your jupyter configuration folder `jupyter --config-dir`
+
+Go in there and create a `custom` folder. Place the following into a `custom.js` file:
+
+```javascript
+require(["codemirror/keymap/sublime", "notebook/js/cell", "base/js/namespace"],
+    function(sublime_keymap, cell, IPython) {
+        // setTimeout(function(){ // uncomment line to fake race-condition
+        cell.Cell.options_default.cm_config.keyMap = 'sublime';
+        var cells = IPython.notebook.get_cells();
+        for(var cl=0; cl< cells.length ; cl++){
+            cells[cl].code_mirror.setOption('keyMap', 'sublime');
+        }
+ 
+        // }, 1000)// uncomment  line to fake race condition 
+    } 
+);
+```
+
+Boom, ⌘+d your way to multiselect freedom.
