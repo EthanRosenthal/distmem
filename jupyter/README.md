@@ -37,6 +37,14 @@ You can now spinup a remote machine on port 8888 by typing
 $ ipynb 8888
 ```
 
+Note: you will likely need to check the file `nohup.out` (e.g. run `tail nohup.out`) to find the token (like a password) for your notebook which you'll have to enter later. You should see some lines like
+
+```
+[I 11:49:29.071 NotebookApp] The Jupyter Notebook is running at:
+[I 11:49:29.072 NotebookApp] http://localhost:8889/?token=e6ebcac8a9f704c2766beac4b06a1e346945348188b70b15
+```
+
+where your token is `e6ebcac8a9f704c2766beac4b06a1e346945348188b70b15`.
 
 On your local machine, add the following to your ```bashrc```
 
@@ -53,7 +61,9 @@ Forward your local port 8887 to remote port 8888 on host ```remote_hostname``` l
 $ forward_ipynb_ports 8887 8888 remote_hostname
 ```
 
-Only pain is killing everything... gotta search for the pids and ```kill```, e.g. `ps aux | grep jupyter`.
+Now, go to http://localhost:8888 in your browser to access your remote notebook. This may open a page where you then have to paste that token.
+
+The "only" pain is shutting the notebook down on the remote instance. You can search for the process (PID) that is running your notebook using `ps aux | grep jupyter` and ```kill``` it. Or, if you're only running one notebook, you can run `pkill jupyter`.
 
 ## Sublime-style keyboard shortcuts
 
