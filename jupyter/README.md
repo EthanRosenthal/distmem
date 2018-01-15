@@ -4,6 +4,7 @@
 - [Run a notebook remotely](#run-a-notebook-remotely)
 - [Sublime-style keyboard shortcuts](#sublime-style-keyboard-shortcuts)
 - [Hide code](#hide-code)
+- [Hi-Res Plots](#hi-res-plots)
 
 ## Automatically number cells
 
@@ -143,3 +144,15 @@ There's also this extension, [hide_code](https://github.com/kirbs-/hide_code), b
 </script>
 <form action="javascript:code_toggle()"><input type="submit" id="toggleButton" value="Show Code"></form>
 ```
+
+## Hi-Res Plots
+
+Stolen from [here](https://gist.github.com/minrk/3301035)
+
+Run the following in a cell
+
+```
+%config InlineBackend.figure_format = 'retina'
+```
+
+to increase the resolution of matplotlib plots.
