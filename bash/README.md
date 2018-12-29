@@ -16,3 +16,17 @@ sed -n '100,110p' file.txt
 ```bash
 grep -n "where does this appear" file.txt
 ```
+
+## nano on osx
+
+Upgrade from default:
+
+```
+brew install nano
+```
+
+Add syntax highlighting
+
+```
+echo "include \"/usr/local/Cellar/nano/*/share/nano/*.nanorc\"" > ~/.nanorc
+```
