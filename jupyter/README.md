@@ -5,6 +5,7 @@
 - [Sublime-style keyboard shortcuts](#sublime-style-keyboard-shortcuts)
 - [Hide code](#hide-code)
 - [Hi-Res Plots](#hi-res-plots)
+- [Use black](#use-black)
 
 ## Automatically number cells
 
@@ -156,3 +157,9 @@ Run the following in a cell
 ```
 
 to increase the resolution of matplotlib plots.
+
+## Use black
+
+Install [this](https://github.com/ryantam626/jupyterlab_code_formatter) jupyterlab extension to run the [black](https://github.com/psf/black) code formatter on cells.
+
+Make sure to check out the section about adding keyboard shortcuts. The JSON goes inside Settings -> Keyboard Shortcuts -> User Overrides.
