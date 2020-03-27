@@ -69,25 +69,10 @@ The "only" pain is shutting the notebook down on the remote instance. You can se
 
 ## Sublime-style keyboard shortcuts
 
-Stolen from [here](http://blog.rtwilson.com/how-to-get-sublime-text-style-editing-in-the-ipythonjupyter-notebook/)
+Repo is [here](https://github.com/ryantam626/jupyterlab_sublime)
 
-Find your jupyter configuration folder `jupyter --config-dir`
-
-Go in there and create a `custom` folder. Place the following into a `custom.js` file:
-
-```javascript
-require(["codemirror/keymap/sublime", "notebook/js/cell", "base/js/namespace"],
-    function(sublime_keymap, cell, IPython) {
-        // setTimeout(function(){ // uncomment line to fake race-condition
-        cell.Cell.options_default.cm_config.keyMap = 'sublime';
-        var cells = IPython.notebook.get_cells();
-        for(var cl=0; cl< cells.length ; cl++){
-            cells[cl].code_mirror.setOption('keyMap', 'sublime');
-        }
- 
-        // }, 1000)// uncomment  line to fake race condition 
-    } 
-);
+```
+jupyter labextension install @ryantam626/jupyterlab_sublime
 ```
 
 Boom, ⌘+d your way to multiselect freedom.
