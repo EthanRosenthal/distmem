@@ -143,6 +143,14 @@ Run the following in a cell
 
 to increase the resolution of matplotlib plots.
 
+Or, do this globally by creating an IPython config file (if you don't have one) at `~/.ipython/profile_default/ipython_config.py` with the following
+
+```python
+c = get_config()
+
+c.InlineBackend.figure_format = "retina"
+```
+
 ## Use black
 
 Install [this](https://github.com/ryantam626/jupyterlab_code_formatter) jupyterlab extension to run the [black](https://github.com/psf/black) code formatter on cells.
