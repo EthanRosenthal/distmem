@@ -6,6 +6,7 @@
 - [Hide code](#hide-code)
 - [Hi-Res Plots](#hi-res-plots)
 - [Use black](#use-black)
+- [Boilerplate](#boilerplate)
 
 ## Automatically number cells
 
@@ -156,3 +157,31 @@ c.InlineBackend.figure_format = "retina"
 Install [this](https://github.com/ryantam626/jupyterlab_code_formatter) jupyterlab extension to run the [black](https://github.com/psf/black) code formatter on cells.
 
 Make sure to check out the section about adding keyboard shortcuts. The JSON goes inside Settings -> Keyboard Shortcuts -> User Overrides.
+
+## Boilerplate
+
+I put the following in my `.bash_profile`. I run `jupyter-init` from the command line, and this copies some code into my clipboard which I then paste into the first cell of my jupyter notebooks. While I could create custom matplotlib stylesheets and whatnot, this way my notebooks are more easily reproducible.
+
+```bash
+# Copy some jupyter notebook boilerplate to the clipboard.
+alias jupyter-init="echo \"%config InlineBackend.figure_format = 'retina'
+%load_ext autoreload
+%autoreload 2
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+_RC_PARAMS = {
+    'figure.figsize': (10, 6),
+    'axes.labelsize': 16,
+    'axes.titlesize': 18,
+    'font.size': 16,
+    'lines.linewidth': 2,
+    'lines.markersize': 6,
+    'legend.fontsize': 14
+}
+for k, v in _RC_PARAMS.items():
+    plt.rcParams[k] = v
+\" | pbcopy "
+```
